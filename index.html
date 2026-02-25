@@ -768,11 +768,18 @@
         opacity: 1 !important;
       }
       .nav-cta-mobile a:hover { background: var(--gold-light) !important; }
-      /* Hero sub — на мобиле каждый элемент с новой строки, по центру */
+      /* Hero est — Санкт-Петербург с новой строки */
+      .hero-est { display: block; text-align: center; }
+      .hero-est-sep  { display: none; }
+      .hero-est-city { display: block; margin-top: 4px; }
+
+      /* Hero sub — каждый элемент с новой строки, по центру */
       .hero-sub { text-align: center; }
       .hero-sub-sep  { display: none; }
-      .hero-sub-city,
-      .hero-sub-item { display: block; }
+      .hero-sub-addr { display: block; margin-bottom: 10px; }
+      .hero-sub-addr-street { display: block; margin-bottom: 6px; }
+      .hero-sub-metro { display: flex; align-items: center; justify-content: center; gap: 2px; }
+      .hero-sub-item { display: block; margin-bottom: 10px; }
 
       .tables-grid { grid-template-columns: 1fr; }
       .trainers-g  { grid-template-columns: 1fr; }
@@ -850,10 +857,21 @@
         <div class="hero-logo-sub-text">бильярдный клуб</div>
       </div>
     </div>
-    <span class="hero-est">Основан в 2007 году · Санкт-Петербург</span>
+    <span class="hero-est">
+      <span class="hero-est-year">Основан в 2007 году</span><span class="hero-est-sep"> · </span><span class="hero-est-city">Санкт-Петербург</span>
+    </span>
     <h1 class="hero-h1">Мастерство<br>и <em>атмосфера</em></h1>
     <p class="hero-sub">
-      <span class="hero-sub-city">Санкт-Петербург, ул. Пионерская, 21</span>
+      <span class="hero-sub-addr">
+        <span class="hero-sub-addr-street">ул. Пионерская, 21</span>
+        <span class="hero-sub-metro">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="vertical-align:middle;margin-right:4px">
+            <circle cx="8" cy="8" r="8" fill="#E2231A"/>
+            <path d="M3 12 L8 4 L13 12" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M5.5 9.5 L8 5.5 L10.5 9.5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>Чкаловская
+        </span>
+      </span>
       <span class="hero-sub-sep"> &nbsp;·&nbsp; </span>
       <span class="hero-sub-item">33 стола</span>
       <span class="hero-sub-sep"> &nbsp;·&nbsp; </span>
