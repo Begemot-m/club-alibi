@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Бильярдный клуб «Алиби» — Санкт-Петербург</title>
+  <meta name="description" content="Бильярдный клуб Алиби в Санкт-Петербурге. 33 стола, 1000 м², бильярдная школа, ресторан. Ул. Пионерская, 21.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brown-dark:  #100A04;
+      --brown-mid:   #1E1108;
+      --brown-card:  #261508;
+      --gold:        #C8973A;
+      --gold-light:  #E0AD55;
+      --cream:       #F2E8D4;
+      --muted:       rgba(242,232,212,0.55);
+      --border:      rgba(200,151,58,0.18);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--brown-dark);
+      color: var(--cream);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ─────────────────────────────── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--brown-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* ── NAVBAR ────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 14px; left: 14px; right: 14px;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 22px;
+      background: rgba(16,10,4,0.82);
+      backdrop-filter: blur(22px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: background .3s;
+    }
+    #nav.scrolled { background: rgba(10,6,2,0.97); }
+
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 44px; width: auto; }
+    .nav-logo-text {
+      font-family: 'Cormorant', serif;
+      font-size: 24px; font-weight: 700;
+      color: var(--gold); letter-spacing: .12em;
+      display: none;
+    }
+
+    .nav-links {
+      display: flex; gap: 28px; list-style: none;
+    }
+    .nav-links a {
+      color: var(--cream); text-decoration: none;
+      font-size: 12px; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      opacity: .75; transition: opacity .2s, color .2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    .nav-cta {
+      flex-shrink: 0;
+      background: var(--gold); color: #100A04;
+      padding: 9px 22px; border-radius: 8px;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      text-decoration: none; cursor: pointer;
+      border: none;
+      transition: background .2s, transform .2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .burger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px;
+    }
+    .burger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--cream); border-radius: 2px;
+      transition: all .3s;
+    }
+
+    /* ── HERO ──────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      background: radial-gradient(ellipse 80% 60% at 35% 55%, #2B1507 0%, #130A03 55%, #080401 100%);
+    }
+
+    #hero-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+
+    /* subtle diagonal texture */
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent, transparent 38px,
+        rgba(200,151,58,.025) 38px, rgba(200,151,58,.025) 40px
+      );
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 100px 24px 60px;
+      max-width: 860px;
+    }
+
+    .hero-logo {
+      width: 140px; height: auto;
+      margin: 0 auto 28px;
+      animation: fadeDown .9s ease both;
+    }
+
+    .hero-est {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .35em; text-transform: uppercase;
+      margin-bottom: 20px;
+      animation: fadeUp .9s .15s ease both;
+    }
+
+    .hero-h1 {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(44px, 9vw, 96px);
+      font-weight: 600; line-height: 1.05;
+      letter-spacing: -.02em;
+      color: #fff;
+      margin-bottom: 28px;
+      animation: fadeUp .9s .25s ease both;
+    }
+    .hero-h1 em { color: var(--gold); font-style: italic; }
+
+    .hero-sub {
+      font-size: 13px; font-weight: 400;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 44px;
+      animation: fadeUp .9s .4s ease both;
+    }
+
+    .hero-btns {
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp .9s .55s ease both;
+    }
+
+    .btn-gold {
+      background: var(--gold); color: #100A04;
+      padding: 15px 38px; border-radius: 8px;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background .25s, transform .25s, box-shadow .25s;
+    }
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(200,151,58,.38);
+    }
+
+    .btn-outline {
+      background: transparent; color: var(--cream);
+      padding: 15px 38px; border-radius: 8px;
+      font-size: 13px; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      text-decoration: none; cursor: pointer;
+      border: 1px solid rgba(242,232,212,.28);
+      transition: border-color .25s, color .25s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-scroll-hint {
+      position: absolute; bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: var(--muted); font-size: 10px;
+      letter-spacing: .25em; text-transform: uppercase;
+      animation: scrollBounce 2s infinite;
+    }
+
+    /* ── STATS BAR ─────────────────────────────── */
+    #stats {
+      background: linear-gradient(180deg, #080401 0%, #1A0E06 100%);
+      padding: 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-card {
+      text-align: center;
+      padding: 64px 24px;
+      border: 1px solid var(--border);
+      position: relative; overflow: hidden;
+      transition: background .35s;
+    }
+    .stat-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0; transition: opacity .35s;
+    }
+    .stat-card:hover { background: rgba(200,151,58,.06); }
+    .stat-card:hover::after { opacity: 1; }
+
+    .stat-number {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(52px, 7vw, 80px);
+      font-weight: 700; color: var(--gold); line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat-label {
+      font-size: 11px; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    /* ── SECTION WRAPPER ───────────────────────── */
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+    .sec { padding: 110px 0; }
+    .sec-alt { background: rgba(0,0,0,.22); }
+
+    .tag {
+      display: inline-block;
+      color: var(--gold); font-size: 11px; font-weight: 600;
+      letter-spacing: .3em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .sec-h2 {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(36px, 5.5vw, 64px);
+      font-weight: 600; line-height: 1.08; color: #fff;
+      margin-bottom: 22px;
+    }
+    .sec-p {
+      font-size: 15px; color: var(--muted);
+      max-width: 580px; line-height: 1.82;
+    }
+
+    /* ── TABLES SECTION ────────────────────────── */
+    .tables-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 58px;
+    }
+    .table-card {
+      background: rgba(255,255,255,.025);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 50px 30px 42px;
+      text-align: center;
+      position: relative; overflow: hidden;
+      transition: transform .4s, border-color .4s, background .4s;
+      cursor: default;
+    }
+    .table-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0, rgba(200,151,58,.12) 0%, transparent 65%);
+      opacity: 0; transition: opacity .4s;
+    }
+    .table-card:hover { transform: translateY(-5px); border-color: rgba(200,151,58,.4); }
+    .table-card:hover::before { opacity: 1; }
+
+    .table-ico { width: 60px; height: 60px; margin: 0 auto 22px; }
+    .table-count {
+      font-family: 'Cormorant', serif;
+      font-size: 70px; font-weight: 700;
+      color: var(--gold); line-height: 1;
+    }
+    .table-name {
+      font-size: 17px; font-weight: 600; color: #fff;
+      margin: 8px 0 12px;
+    }
+    .table-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ── PRICES ────────────────────────────────── */
+    .price-wrap {
+      overflow-x: auto;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-top: 52px;
+    }
+    .price-table {
+      width: 100%; border-collapse: collapse; min-width: 600px;
+    }
+    .price-table th {
+      padding: 18px 24px;
+      font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .price-table td {
+      padding: 18px 24px;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      font-size: 15px; color: var(--cream);
+    }
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table tbody tr { transition: background .2s; }
+    .price-table tbody tr:hover td { background: rgba(200,151,58,.05); }
+
+    .price-val {
+      font-family: 'Cormorant', serif;
+      font-size: 26px; font-weight: 600; color: var(--gold);
+    }
+    .price-badge {
+      display: inline-block;
+      background: rgba(200,151,58,.14);
+      border: 1px solid rgba(200,151,58,.28);
+      color: var(--gold); font-size: 10px; font-weight: 600;
+      padding: 3px 10px; border-radius: 100px;
+      letter-spacing: .1em;
+    }
+    .price-note {
+      display: flex; align-items: flex-start; gap: 14px;
+      margin-top: 22px; padding: 18px 22px;
+      background: rgba(200,151,58,.05);
+      border: 1px solid rgba(200,151,58,.12);
+      border-radius: 12px;
+      font-size: 13px; color: var(--muted); line-height: 1.6;
+    }
+    .price-note svg { flex-shrink: 0; margin-top: 1px; }
+
+    /* ── POPUP CARDS ───────────────────────────── */
+    .popup-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 58px;
+    }
+    .popup-card {
+      position: relative; border-radius: 22px;
+      overflow: hidden; cursor: pointer;
+      aspect-ratio: 3/4;
+      transition: transform .4s cubic-bezier(.22,.68,0,1.3);
+    }
+    .popup-card:hover { transform: scale(1.025); }
+    .popup-card:focus-visible {
+      outline: 2px solid var(--gold); outline-offset: 4px;
+    }
+
+    .popup-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform .6s ease;
+    }
+    .popup-card:hover .popup-bg { transform: scale(1.07); }
+
+    .popup-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,4,1,.95) 28%, rgba(8,4,1,.35) 100%);
+    }
+
+    .popup-body {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 36px 30px;
+    }
+    .popup-ico {
+      width: 46px; height: 46px;
+      background: rgba(200,151,58,.13);
+      border: 1px solid rgba(200,151,58,.3);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .popup-title {
+      font-family: 'Cormorant', serif;
+      font-size: 30px; font-weight: 600; color: #fff;
+      line-height: 1.15; margin-bottom: 10px;
+    }
+    .popup-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 22px; }
+    .popup-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      color: var(--gold); font-size: 11px; font-weight: 600;
+      letter-spacing: .15em; text-transform: uppercase;
+      transition: gap .2s;
+    }
+    .popup-card:hover .popup-link { gap: 12px; }
+
+    /* ── MODALS ────────────────────────────────── */
+    .overlay {
+      position: fixed; inset: 0; z-index: 90;
+      background: rgba(0,0,0,.88);
+      backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+      opacity: 0; visibility: hidden;
+      transition: opacity .3s, visibility .3s;
+    }
+    .overlay.on { opacity: 1; visibility: visible; }
+
+    .modal {
+      background: var(--brown-mid);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      max-width: 920px; width: 100%;
+      max-height: 88vh; overflow-y: auto;
+      transform: translateY(18px) scale(.98);
+      transition: transform .3s;
+    }
+    .overlay.on .modal { transform: translateY(0) scale(1); }
+
+    .modal::-webkit-scrollbar { width: 4px; }
+    .modal::-webkit-scrollbar-thumb { background: rgba(200,151,58,.3); border-radius: 2px; }
+
+    .modal-head {
+      position: sticky; top: 0; z-index: 2;
+      background: var(--brown-mid);
+      padding: 36px 44px 28px;
+      border-bottom: 1px solid rgba(200,151,58,.1);
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    }
+    .modal-close {
+      flex-shrink: 0;
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: 1px solid rgba(255,255,255,.12);
+      border-radius: 8px; cursor: pointer; color: var(--cream);
+      transition: border-color .2s, color .2s;
+    }
+    .modal-close:hover { border-color: var(--gold); color: var(--gold); }
+    .modal-cnt { padding: 36px 44px 44px; }
+
+    /* trainers */
+    .trainers-g {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    }
+    .trainer {
+      background: rgba(200,151,58,.05);
+      border: 1px solid rgba(200,151,58,.12);
+      border-radius: 16px; padding: 28px;
+      transition: border-color .3s;
+    }
+    .trainer:hover { border-color: rgba(200,151,58,.32); }
+    .trainer-av {
+      width: 68px; height: 68px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #7B4A1A);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant', serif; font-size: 26px; font-weight: 700;
+      color: #100A04; margin-bottom: 18px;
+    }
+    .trainer-name { font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 3px; }
+    .trainer-rank { font-size: 11px; color: var(--gold); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px; }
+    .trainer-bio { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
+    .trainer-phone {
+      display: inline-flex; align-items: center; gap: 7px;
+      color: var(--gold); font-size: 14px; font-weight: 500;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .trainer-phone:hover { opacity: .75; }
+
+    /* menu */
+    .menu-g { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .menu-img {
+      width: 100%; border-radius: 12px;
+      cursor: zoom-in; transition: transform .3s;
+    }
+    .menu-img:hover { transform: scale(1.02); }
+
+    /* contacts */
+    .phone-big {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(34px, 6vw, 58px);
+      font-weight: 600; color: var(--gold);
+      text-decoration: none; display: block;
+      margin: 20px 0 28px;
+      transition: opacity .2s;
+    }
+    .phone-big:hover { opacity: .78; }
+    .contact-g { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 36px; }
+    .contact-box {
+      background: rgba(200,151,58,.05);
+      border: 1px solid rgba(200,151,58,.12);
+      border-radius: 12px; padding: 22px;
+    }
+    .contact-lbl { font-size: 10px; color: var(--gold); letter-spacing: .22em; text-transform: uppercase; margin-bottom: 8px; }
+    .contact-val { font-size: 15px; color: var(--cream); font-weight: 500; line-height: 1.5; }
+
+    /* ── ROUTE ─────────────────────────────────── */
+    .route-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px; align-items: start;
+      margin-top: 60px;
+    }
+
+    .route-steps { display: flex; flex-direction: column; }
+
+    .step {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding-bottom: 38px; position: relative;
+      opacity: 0; transform: translateX(-22px);
+      transition: opacity .55s, transform .55s;
+    }
+    .step.vis { opacity: 1; transform: none; }
+
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 22px; top: 46px; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(200,151,58,.5), transparent);
+    }
+
+    .step-n {
+      flex-shrink: 0;
+      width: 46px; height: 46px; border-radius: 50%;
+      background: rgba(200,151,58,.08);
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant', serif; font-size: 20px;
+      font-weight: 700; color: var(--gold);
+    }
+    .step-title { font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 7px; }
+    .step-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* SVG map illustration */
+    .map-illus {
+      background: rgba(200,151,58,.03);
+      border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden;
+    }
+
+    /* Yandex Maps */
+    .ym-wrap {
+      margin-top: 58px;
+      border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border);
+      height: 420px;
+    }
+    .ym-wrap iframe { display: block; width: 100%; height: 100%; border: none; }
+
+    /* ── FOOTER ────────────────────────────────── */
+    footer {
+      background: #060402;
+      border-top: 1px solid rgba(200,151,58,.1);
+      padding: 64px 24px 40px;
+    }
+    .footer-grid {
+      max-width: 1240px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px;
+    }
+    .foot-logo img { height: 54px; margin-bottom: 20px; }
+    .foot-tagline { font-size: 14px; color: var(--muted); line-height: 1.8; max-width: 270px; }
+    .foot-h { font-size: 11px; color: var(--gold); letter-spacing: .22em; text-transform: uppercase; margin-bottom: 18px; }
+    .foot-ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .foot-ul a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .2s; }
+    .foot-ul a:hover { color: var(--cream); }
+
+    .foot-bottom {
+      max-width: 1240px; margin: 36px auto 0;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.05);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 12px; color: rgba(242,232,212,.28);
+    }
+    .foot-bottom a { color: inherit; text-decoration: none; transition: color .2s; }
+    .foot-bottom a:hover { color: var(--gold); }
+
+    /* ── REVEAL ────────────────────────────────── */
+    .rev {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .rev.vis { opacity: 1; transform: none; }
+    .rev.d1 { transition-delay: .1s; }
+    .rev.d2 { transition-delay: .2s; }
+    .rev.d3 { transition-delay: .3s; }
+    .rev.d4 { transition-delay: .4s; }
+
+    /* ── KEYFRAMES ─────────────────────────────── */
+    @keyframes fadeDown  { from { opacity:0; transform:translateY(-18px); } to { opacity:1; transform:none; } }
+    @keyframes fadeUp    { from { opacity:0; transform:translateY(18px);  } to { opacity:1; transform:none; } }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(7px); }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── RESPONSIVE ────────────────────────────── */
+    @media (max-width: 1024px) {
+      .stats-grid   { grid-template-columns: repeat(2, 1fr); }
+      .tables-grid  { grid-template-columns: repeat(2, 1fr); }
+      .popup-row    { grid-template-columns: 1fr; }
+      .popup-card   { aspect-ratio: unset; min-height: 300px; }
+      .route-wrap   { grid-template-columns: 1fr; gap: 44px; }
+      .footer-grid  { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .burger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; inset: 74px 14px 14px;
+        background: rgba(16,10,4,.97);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 36px; gap: 22px; z-index: 59;
+      }
+      .nav-links.open a { font-size: 18px; }
+      .tables-grid { grid-template-columns: 1fr; }
+      .trainers-g  { grid-template-columns: 1fr; }
+      .menu-g      { grid-template-columns: 1fr; }
+      .contact-g   { grid-template-columns: 1fr; }
+      .modal-cnt   { padding: 24px; }
+      .modal-head  { padding: 22px 24px 18px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .foot-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .sec { padding: 72px 0; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <img src="https://club-alibi.ru/img/alibi_logo.gif" alt="Алиби"
+         onerror="this.style.display='none';document.querySelector('.nav-logo-text').style.display='block'">
+    <span class="nav-logo-text">АЛИБИ</span>
+  </a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#tables"   onclick="closeMenu()">Залы</a></li>
+    <li><a href="#prices"   onclick="closeMenu()">Цены</a></li>
+    <li><a href="#services" onclick="closeMenu()">Услуги</a></li>
+    <li><a href="#route"    onclick="closeMenu()">Как найти</a></li>
+  </ul>
+
+  <a href="tel:+79312987778" class="nav-cta">Забронировать стол</a>
+
+  <div class="burger" id="burger" onclick="toggleMenu()" aria-label="Меню" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+
+  <div class="hero-inner">
+    <img src="https://club-alibi.ru/img/alibi_logo.gif" alt="Алиби" class="hero-logo"
+         onerror="this.style.display='none'">
+    <span class="hero-est">Основан в 2007 году · Санкт-Петербург</span>
+    <h1 class="hero-h1">Мастерство<br>и <em>атмосфера</em></h1>
+    <p class="hero-sub">Ул. Пионерская, 21 &nbsp;·&nbsp; 33 стола &nbsp;·&nbsp; 1 000 м²</p>
+    <div class="hero-btns">
+      <a href="tel:+79312987778" class="btn-gold">Забронировать стол</a>
+      <a href="#services" class="btn-outline">Подробнее</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <span>Прокрутите</span>
+    <svg width="14" height="22" fill="none">
+      <path d="M7 0v14M1 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ══════════════ STATS ══════════════ -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-card rev">
+      <div class="stat-number" id="cnt-tables">33</div>
+      <div class="stat-label">Бильярдных стола</div>
+    </div>
+    <div class="stat-card rev d1">
+      <div class="stat-number">1000<span style="font-size:.5em">м²</span></div>
+      <div class="stat-label">Общая площадь</div>
+    </div>
+    <div class="stat-card rev d2">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Просторных зала</div>
+    </div>
+    <div class="stat-card rev d3">
+      <div class="stat-number" id="cnt-years">17</div>
+      <div class="stat-label">Лет безупречной игры</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ TABLES ══════════════ -->
+<div class="sec">
+  <div class="wrap">
+    <div class="rev">
+      <span class="tag">Наши залы</span>
+      <h2 class="sec-h2">Бильярд на любой вкус</h2>
+      <p class="sec-p">Три просторных зала с профессиональными столами ведущих производителей — русский бильярд, пул и китайская восьмёрка под одной крышей.</p>
+    </div>
+
+    <div class="tables-grid" id="tables">
+
+      <div class="table-card rev d1">
+        <svg class="table-ico" viewBox="0 0 60 60" fill="none">
+          <rect x="6" y="14" width="48" height="32" rx="5" fill="rgba(200,151,58,.1)" stroke="#C8973A" stroke-width="1.4"/>
+          <circle cx="30" cy="30" r="7" fill="rgba(200,151,58,.25)" stroke="#C8973A" stroke-width="1.2"/>
+          <circle cx="14" cy="20" r="3" fill="rgba(200,151,58,.55)"/>
+          <circle cx="46" cy="20" r="3" fill="rgba(200,151,58,.55)"/>
+          <circle cx="14" cy="40" r="3" fill="rgba(200,151,58,.55)"/>
+          <circle cx="46" cy="40" r="3" fill="rgba(200,151,58,.55)"/>
+          <circle cx="30" cy="14" r="3" fill="rgba(200,151,58,.55)"/>
+          <circle cx="30" cy="46" r="3" fill="rgba(200,151,58,.55)"/>
+        </svg>
+        <div class="table-count">16</div>
+        <div class="table-name">Русский бильярд</div>
+        <div class="table-desc">Классический русский бильярд на 12-футовых столах. Идеален для опытных игроков и турнирных баталий.</div>
+      </div>
+
+      <div class="table-card rev d2">
+        <svg class="table-ico" viewBox="0 0 60 60" fill="none">
+          <rect x="6" y="14" width="48" height="32" rx="5" fill="rgba(200,151,58,.1)" stroke="#C8973A" stroke-width="1.4"/>
+          <circle cx="20" cy="24" r="5" fill="rgba(200,151,58,.75)"/>
+          <circle cx="32" cy="30" r="5" fill="rgba(200,151,58,.5)"/>
+          <circle cx="44" cy="36" r="5" fill="rgba(200,151,58,.35)"/>
+          <circle cx="20" cy="36" r="4" fill="rgba(200,151,58,.2)" stroke="#C8973A" stroke-width="1"/>
+          <circle cx="44" cy="24" r="4" fill="rgba(200,151,58,.2)" stroke="#C8973A" stroke-width="1"/>
+        </svg>
+        <div class="table-count">16</div>
+        <div class="table-name">Американский пул</div>
+        <div class="table-desc">Пул на 9-футовых столах Brunswick. Подходит как для начинающих, так и для профессиональных игроков.</div>
+      </div>
+
+      <div class="table-card rev d3">
+        <svg class="table-ico" viewBox="0 0 60 60" fill="none">
+          <rect x="6" y="14" width="48" height="32" rx="5" fill="rgba(200,151,58,.1)" stroke="#C8973A" stroke-width="1.4"/>
+          <circle cx="30" cy="26" r="6" fill="rgba(200,151,58,.75)"/>
+          <circle cx="22" cy="34" r="5" fill="rgba(255,255,255,.18)" stroke="#C8973A" stroke-width="1"/>
+          <circle cx="38" cy="34" r="5" fill="rgba(255,255,255,.18)" stroke="#C8973A" stroke-width="1"/>
+          <text x="30" y="39" text-anchor="middle" fill="#C8973A" font-size="7" font-weight="700" font-family="sans-serif">8</text>
+        </svg>
+        <div class="table-count">1</div>
+        <div class="table-name">Китайский пул</div>
+        <div class="table-desc">Эксклюзивный стол для китайского пула — единственный в клубе. Уникальный игровой опыт.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ PRICES ══════════════ -->
+<div class="sec sec-alt" id="prices">
+  <div class="wrap">
+    <div class="rev">
+      <span class="tag">Прайс-лист</span>
+      <h2 class="sec-h2">Прозрачные цены</h2>
+      <p class="sec-p">Честные тарифы без скрытых платежей. Студентам — скидка 10% по будням после 16:00.</p>
+    </div>
+
+    <div class="price-wrap rev">
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Тип игры</th>
+            <th>Пн–Чт&ensp;10:00–16:00</th>
+            <th>Пн–Чт&ensp;16:00–06:00</th>
+            <th>Пт–Вс / Праздники</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Русский бильярд</strong></td>
+            <td><span class="price-val">650</span>&thinsp;₽/ч</td>
+            <td><span class="price-val">850</span>&thinsp;₽/ч</td>
+            <td><span class="price-val">1&thinsp;000</span>&thinsp;₽/ч</td>
+          </tr>
+          <tr>
+            <td><strong>Американский пул</strong></td>
+            <td><span class="price-val">650</span>&thinsp;₽/ч</td>
+            <td><span class="price-val">850</span>&thinsp;₽/ч</td>
+            <td><span class="price-val">1&thinsp;000</span>&thinsp;₽/ч</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>VIP-зона</strong>
+              <span class="price-badge">Премиум</span>
+            </td>
+            <td style="color:var(--muted)">—</td>
+            <td style="color:var(--muted)">—</td>
+            <td><span class="price-val">3&thinsp;500</span>&thinsp;₽/ч</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Бизнес-ланч</strong>
+              <span style="font-size:12px;color:var(--muted)">12:00–16:00</span>
+            </td>
+            <td><span class="price-val">590</span>&thinsp;₽</td>
+            <td style="color:var(--muted)">—</td>
+            <td style="color:var(--muted)">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="price-note rev">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="var(--gold)" stroke-width="1.5">
+        <circle cx="12" cy="12" r="10" stroke-width="1.4"/>
+        <path d="M12 8v4M12 16h.01" stroke-linecap="round"/>
+      </svg>
+      <span>Режим работы: <strong style="color:var(--cream)">10:00–06:00 ежедневно.</strong> После 23:00 — вход только по предварительному звонку администратору.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ SERVICES ══════════════ -->
+<div class="sec" id="services">
+  <div class="wrap">
+    <div class="rev">
+      <span class="tag">Наши услуги</span>
+      <h2 class="sec-h2">Всё для идеального вечера</h2>
+      <p class="sec-p">Нажмите на карточку, чтобы узнать больше о каждом из наших направлений.</p>
+    </div>
+
+    <div class="popup-row">
+
+      <!-- School -->
+      <div class="popup-card rev d1" onclick="open_m('m-school')" tabindex="0" role="button" aria-label="Бильярдная школа">
+        <div class="popup-bg" style="background: linear-gradient(145deg,#2B1507,#100A04);">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.13" viewBox="0 0 400 500" fill="none">
+            <circle cx="200" cy="160" r="90" stroke="#C8973A" stroke-width="1.5"/>
+            <circle cx="115" cy="310" r="65" stroke="#C8973A" stroke-width="1.2"/>
+            <circle cx="295" cy="360" r="75" stroke="#C8973A" stroke-width="1.2"/>
+            <line x1="200" y1="160" x2="115" y2="310" stroke="#C8973A" stroke-width=".8"/>
+            <line x1="200" y1="160" x2="295" y2="360" stroke="#C8973A" stroke-width=".8"/>
+          </svg>
+        </div>
+        <div class="popup-overlay"></div>
+        <div class="popup-body">
+          <div class="popup-ico">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#C8973A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>
+            </svg>
+          </div>
+          <h3 class="popup-title">Бильярдная<br>школа</h3>
+          <p class="popup-desc">4 тренера-чемпиона. Индивидуальные и групповые занятия. Подготовка к турнирам.</p>
+          <div class="popup-link">
+            Познакомиться
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Restaurant -->
+      <div class="popup-card rev d2" onclick="open_m('m-menu')" tabindex="0" role="button" aria-label="Ресторан">
+        <div class="popup-bg" style="background: linear-gradient(145deg,#1A0D05,#291407);">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.11" viewBox="0 0 400 500" fill="none">
+            <path d="M80 100 Q200 40 320 100 Q370 200 320 370 Q200 460 80 370 Q30 200 80 100Z" stroke="#C8973A" stroke-width="1.5"/>
+            <path d="M140 150 Q200 120 260 150 Q290 230 260 330 Q200 380 140 330 Q110 230 140 150Z" stroke="#C8973A" stroke-width="1"/>
+            <circle cx="200" cy="260" r="35" fill="rgba(200,151,58,.08)" stroke="#C8973A" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="popup-overlay"></div>
+        <div class="popup-body">
+          <div class="popup-ico">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#C8973A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.87c1.355 0 2.697.055 4.024.165C17.155 8.51 18 9.473 18 10.608v2.513m-3-4.87v-1.5m-6 4.5v4.5m12-4.5v4.5m-12-4.5h12"/>
+            </svg>
+          </div>
+          <h3 class="popup-title">Ресторан<br>и кухня</h3>
+          <p class="popup-desc">Авторское меню с широким выбором блюд. Бизнес-ланч — всего 590 ₽.</p>
+          <div class="popup-link">
+            Смотреть меню
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contacts -->
+      <div class="popup-card rev d3" onclick="open_m('m-contacts')" tabindex="0" role="button" aria-label="Контакты">
+        <div class="popup-bg" style="background: linear-gradient(145deg,#0A0603,#1C1208);">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.12" viewBox="0 0 400 500" fill="none">
+            <circle cx="200" cy="210" r="130" stroke="#C8973A" stroke-width="1.5"/>
+            <circle cx="200" cy="210" r="85"  stroke="#C8973A" stroke-width="1.2"/>
+            <circle cx="200" cy="210" r="42"  stroke="#C8973A" stroke-width="1"/>
+            <line x1="200" y1="80"  x2="200" y2="125" stroke="#C8973A" stroke-width="2"/>
+            <line x1="200" y1="295" x2="200" y2="340" stroke="#C8973A" stroke-width="2"/>
+            <line x1="70"  y1="210" x2="115" y2="210" stroke="#C8973A" stroke-width="2"/>
+            <line x1="285" y1="210" x2="330" y2="210" stroke="#C8973A" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="popup-overlay"></div>
+        <div class="popup-body">
+          <div class="popup-ico">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#C8973A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2.25 6.338c0 3.696 1.83 6.971 4.66 8.993A18.38 18.38 0 0012 16.9c1.787 0 3.47-.465 4.916-1.28A11.247 11.247 0 0021.75 6.338C21.75 3.82 17.321 1.8 12 1.8S2.25 3.82 2.25 6.338z"/>
+              <path d="M2.25 6.5v.162c0 5.523 4.477 10 10 10a9.973 9.973 0 006.75-2.625M2.25 6.5v.162A9.99 9.99 0 005.25 14"/>
+            </svg>
+          </div>
+          <h3 class="popup-title">Контакты<br>и связь</h3>
+          <p class="popup-desc">Быстрый звонок администратору. Бронирование стола и обратная связь.</p>
+          <div class="popup-link">
+            Позвонить
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ROUTE ══════════════ -->
+<div class="sec sec-alt" id="route">
+  <div class="wrap">
+    <div class="rev">
+      <span class="tag">Как нас найти</span>
+      <h2 class="sec-h2">Схема проезда</h2>
+      <p class="sec-p">Мы расположены в торговом центре на ул. Пионерской, 21. Следуйте схеме — всего 4 шага.</p>
+    </div>
+
+    <div class="route-wrap">
+      <!-- Steps -->
+      <div class="route-steps">
+
+        <div class="step" data-delay="0">
+          <div class="step-n">1</div>
+          <div>
+            <div class="step-title">Станция метро «Чкаловская»</div>
+            <div class="step-desc">Выйдите на станции метро Чкаловская. Идите по улице Пионерской в сторону дома 21 — около 5 минут пешком.</div>
+          </div>
+        </div>
+
+        <div class="step" data-delay="150">
+          <div class="step-n">2</div>
+          <div>
+            <div class="step-title">Войдите в торговый центр</div>
+            <div class="step-desc">Заходите в главный вход торгового центра по адресу ул. Пионерская, д. 21.</div>
+          </div>
+        </div>
+
+        <div class="step" data-delay="300">
+          <div class="step-n">3</div>
+          <div>
+            <div class="step-title">Поднимитесь на 2-й этаж</div>
+            <div class="step-desc">Воспользуйтесь эскалатором сразу у входа. Поднимитесь на второй этаж торгового центра.</div>
+          </div>
+        </div>
+
+        <div class="step" data-delay="450">
+          <div class="step-n">4</div>
+          <div>
+            <div class="step-title">Поверните направо — вы на месте!</div>
+            <div class="step-desc">На втором этаже повернуть направо. Вывеска бильярдного клуба «Алиби» будет прямо перед вами. Добро пожаловать!</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Animated SVG scheme -->
+      <div class="map-illus">
+        <svg viewBox="0 0 380 480" fill="none" xmlns="http://www.w3.org/2000/svg"
+             style="width:100%;height:auto;display:block">
+
+          <!-- Background -->
+          <rect width="380" height="480" fill="#100A04"/>
+
+          <!-- Street label -->
+          <rect x="0" y="290" width="380" height="52" fill="#1E1108"/>
+          <text x="190" y="321" text-anchor="middle"
+                fill="rgba(242,232,212,.3)" font-size="11"
+                font-family="Montserrat,sans-serif" font-weight="500">ул. Пионерская</text>
+          <line x1="190" y1="300" x2="190" y2="340" stroke="#C8973A" stroke-width="2"
+                stroke-dasharray="7 5" opacity=".35"/>
+
+          <!-- Building outline -->
+          <rect x="50" y="55" width="280" height="215" rx="10"
+                fill="#1E1108" stroke="#C8973A" stroke-width="1.2" stroke-opacity=".28"/>
+
+          <!-- Floor divider (1st/2nd) -->
+          <line x1="50" y1="165" x2="330" y2="165" stroke="#C8973A" stroke-width=".8" stroke-opacity=".2"/>
+
+          <!-- Floor labels -->
+          <text x="42" y="122" text-anchor="end" fill="rgba(200,151,58,.45)"
+                font-size="9" font-family="Montserrat,sans-serif">2 эт.</text>
+          <text x="42" y="228" text-anchor="end" fill="rgba(200,151,58,.45)"
+                font-size="9" font-family="Montserrat,sans-serif">1 эт.</text>
+          <line x1="46" y1="58" x2="46" y2="268" stroke="rgba(200,151,58,.2)" stroke-width="1"/>
+
+          <!-- Entrance -->
+          <rect x="150" y="245" width="80" height="26" rx="4"
+                fill="rgba(200,151,58,.08)" stroke="#C8973A" stroke-opacity=".45" stroke-width="1.2"/>
+          <line x1="190" y1="245" x2="190" y2="271" stroke="#C8973A" stroke-width="1" stroke-opacity=".35"/>
+          <text x="190" y="262" text-anchor="middle" fill="rgba(200,151,58,.7)"
+                font-size="8" font-family="Montserrat,sans-serif" font-weight="600">ВХОД</text>
+
+          <!-- Escalator column -->
+          <rect x="232" y="168" width="28" height="90" rx="4"
+                fill="rgba(200,151,58,.07)" stroke="#C8973A" stroke-width="1" stroke-opacity=".38"/>
+          <!-- escalator steps -->
+          <line x1="246" y1="195" x2="246" y2="245" stroke="#C8973A" stroke-dasharray="5 4" stroke-opacity=".45"/>
+          <!-- up arrow -->
+          <polygon points="246,168 239,183 253,183" fill="#C8973A" opacity=".6"/>
+          <text x="246" y="268" text-anchor="middle" fill="rgba(200,151,58,.4)"
+                font-size="7" font-family="Montserrat,sans-serif">эскалатор</text>
+
+          <!-- Club box on 2nd floor -->
+          <rect x="78" y="67" width="130" height="78" rx="7"
+                fill="rgba(200,151,58,.11)" stroke="#C8973A" stroke-width="1.8"/>
+          <text x="143" y="96" text-anchor="middle" fill="#C8973A"
+                font-family="Montserrat,sans-serif" font-size="12" font-weight="700">АЛИБИ</text>
+          <text x="143" y="112" text-anchor="middle" fill="rgba(200,151,58,.55)"
+                font-family="Montserrat,sans-serif" font-size="8">бильярдный клуб</text>
+          <text x="143" y="127" text-anchor="middle" fill="rgba(200,151,58,.4)"
+                font-family="Montserrat,sans-serif" font-size="8">2 этаж →</text>
+
+          <!-- Animated route path: street → entrance -->
+          <path d="M190 342 L190 272" stroke="#C8973A" stroke-width="2.5"
+                stroke-linecap="round" stroke-dasharray="80" stroke-dashoffset="80">
+            <animate attributeName="stroke-dashoffset" values="80;0" dur="1.2s" begin="0.5s" fill="freeze"/>
+          </path>
+
+          <!-- entrance → escalator (1st floor) -->
+          <path d="M190 245 L190 215 L246 215 L246 170" stroke="#C8973A" stroke-width="2.5"
+                stroke-linecap="round" stroke-dasharray="160" stroke-dashoffset="160">
+            <animate attributeName="stroke-dashoffset" values="160;0" dur="1.5s" begin="1.8s" fill="freeze"/>
+          </path>
+
+          <!-- escalator top → right → club -->
+          <path d="M246 168 L246 140 L213 140 L143 140 L143 145" stroke="#C8973A" stroke-width="2.5"
+                stroke-linecap="round" stroke-dasharray="140" stroke-dashoffset="140">
+            <animate attributeName="stroke-dashoffset" values="140;0" dur="1.2s" begin="3.4s" fill="freeze"/>
+          </path>
+
+          <!-- destination star -->
+          <circle cx="143" cy="145" r="6" fill="#C8973A" opacity="0">
+            <animate attributeName="opacity" values="0;1" dur="0.3s" begin="4.7s" fill="freeze"/>
+          </circle>
+          <circle cx="143" cy="145" r="14" fill="none" stroke="#C8973A" stroke-width="1" opacity="0">
+            <animate attributeName="opacity" values="0;0.4;0" dur="1.2s" begin="4.7s" repeatCount="indefinite"/>
+            <animate attributeName="r" values="6;22" dur="1.2s" begin="4.7s" repeatCount="indefinite"/>
+          </circle>
+
+          <!-- Person dot at metro -->
+          <circle cx="190" cy="418" r="7" fill="#C8973A">
+            <animate attributeName="opacity" values="1;.55;1" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="190" cy="418" r="7" fill="none" stroke="#C8973A" stroke-width="1" opacity=".3">
+            <animate attributeName="r" values="7;20" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".3;0" dur="2s" repeatCount="indefinite"/>
+          </circle>
+
+          <!-- Metro icon -->
+          <circle cx="190" cy="418" r="22" fill="rgba(200,151,58,.08)" stroke="#C8973A" stroke-width="1" stroke-opacity=".3"/>
+          <text x="190" y="423" text-anchor="middle" fill="#C8973A"
+                font-size="14" font-family="serif" font-weight="700">М</text>
+          <text x="190" y="452" text-anchor="middle" fill="rgba(242,232,212,.35)"
+                font-size="8" font-family="Montserrat,sans-serif">Чкаловская</text>
+
+        </svg>
+      </div>
+    </div>
+
+    <!-- Yandex Map -->
+    <div class="ym-wrap rev">
+      <iframe
+        src="https://yandex.ru/map-widget/v1/?ll=30.295804%2C59.957000&z=16&pt=30.295804%2C59.957000,pm2rdm&text=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3%2C%20%D1%83%D0%BB.%20%D0%9F%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F%2C%2021"
+        title="Карта: Бильярдный клуб Алиби"
+        allowfullscreen loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="foot-logo">
+        <img src="https://club-alibi.ru/img/alibi_logo.gif" alt="Алиби"
+             style="filter:brightness(0) invert(1)"
+             onerror="this.outerHTML='<div style=&quot;font-family:Cormorant,serif;font-size:32px;font-weight:700;color:var(--gold);letter-spacing:.1em;margin-bottom:20px&quot;>АЛИБИ</div>'">
+      </div>
+      <p class="foot-tagline">Бильярдный клуб премиум-класса в центре Санкт-Петербурга. Основан в 2007 году. 33 стола, 3 зала, VIP-зона.</p>
+    </div>
+
+    <div>
+      <div class="foot-h">Навигация</div>
+      <ul class="foot-ul">
+        <li><a href="#tables">Наши залы</a></li>
+        <li><a href="#prices">Прайс-лист</a></li>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#route">Как найти</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="foot-h">Контакты</div>
+      <ul class="foot-ul">
+        <li><a href="tel:+79312987778">+7 (931) 298-777-8</a></li>
+        <li><a href="#">ул. Пионерская, 21</a></li>
+        <li><a href="#">Санкт-Петербург</a></li>
+        <li style="color:var(--muted);font-size:14px">10:00–06:00 ежедневно</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot-bottom">
+    <span>© 2007–2026 Бильярдный клуб «Алиби»</span>
+    <a href="https://www.instagram.com/club.alibi/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+<!-- ══════════════ MODALS ══════════════ -->
+
+<!-- School -->
+<div class="overlay" id="m-school" onclick="bg_close(event)">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Бильярдная школа">
+    <div class="modal-head">
+      <div>
+        <span class="tag" style="margin-bottom:8px">Бильярдная школа</span>
+        <h2 style="font-family:Cormorant,serif;font-size:34px;font-weight:600;color:#fff">Наши тренеры</h2>
+      </div>
+      <button class="modal-close" onclick="close_m('m-school')" aria-label="Закрыть">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-cnt">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:28px;line-height:1.75">
+        Наши тренеры — действующие чемпионы и мастера с многолетним опытом. Индивидуальные и групповые занятия для любого уровня.
+      </p>
+      <div class="trainers-g">
+
+        <div class="trainer">
+          <div class="trainer-av">ВС</div>
+          <div class="trainer-name">Виктор Смоляр</div>
+          <div class="trainer-rank">Чемпион Ленинградской области · КМС</div>
+          <div class="trainer-bio">Специалист по индивидуальным и групповым занятиям. Опытный наставник для игроков любого уровня подготовки.</div>
+          <a href="tel:+79112389942" class="trainer-phone">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+              <path d="M2.25 6.338c0 3.696 1.83 6.971 4.66 8.993A18.38 18.38 0 0012 16.9c1.787 0 3.47-.465 4.916-1.28A11.247 11.247 0 0021.75 6.338C21.75 3.82 17.321 1.8 12 1.8S2.25 3.82 2.25 6.338z"/>
+            </svg>
+            +7 (911) 238-99-42
+          </a>
+        </div>
+
+        <div class="trainer">
+          <div class="trainer-av">РБ</div>
+          <div class="trainer-name">Роман Буторин</div>
+          <div class="trainer-rank">Чемпион Санкт-Петербурга · КМС</div>
+          <div class="trainer-bio">Сертифицированный тренер, кандидат в мастера спорта. Ставит правильную технику с первых занятий.</div>
+          <a href="tel:+79811855242" class="trainer-phone">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+              <path d="M2.25 6.338c0 3.696 1.83 6.971 4.66 8.993A18.38 18.38 0 0012 16.9c1.787 0 3.47-.465 4.916-1.28A11.247 11.247 0 0021.75 6.338C21.75 3.82 17.321 1.8 12 1.8S2.25 3.82 2.25 6.338z"/>
+            </svg>
+            +7 (981) 185-52-42
+          </a>
+        </div>
+
+        <div class="trainer">
+          <div class="trainer-av">ЛМ</div>
+          <div class="trainer-name">Леонид Михайлов</div>
+          <div class="trainer-rank">Мастер русского бильярда · 15+ лет тренерства</div>
+          <div class="trainer-bio">Более 15 лет тренерской деятельности. Эксперт по технике русского бильярда. Работает с профессиональными игроками.</div>
+          <a href="tel:+79219292831" class="trainer-phone">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+              <path d="M2.25 6.338c0 3.696 1.83 6.971 4.66 8.993A18.38 18.38 0 0012 16.9c1.787 0 3.47-.465 4.916-1.28A11.247 11.247 0 0021.75 6.338C21.75 3.82 17.321 1.8 12 1.8S2.25 3.82 2.25 6.338z"/>
+            </svg>
+            +7 (921) 929-28-31
+          </a>
+        </div>
+
+        <div class="trainer">
+          <div class="trainer-av">АС</div>
+          <div class="trainer-name">Алексей Соловьев</div>
+          <div class="trainer-rank">Тренер · Спортивный психолог</div>
+          <div class="trainer-bio">Универсальный тренер по русскому бильярду, пулу, снукеру и китайской восьмёрке. Воспитал 4 чемпионов России и 10 призёров национальных первенств.</div>
+          <a href="tel:+79602830013" class="trainer-phone">
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+              <path d="M2.25 6.338c0 3.696 1.83 6.971 4.66 8.993A18.38 18.38 0 0012 16.9c1.787 0 3.47-.465 4.916-1.28A11.247 11.247 0 0021.75 6.338C21.75 3.82 17.321 1.8 12 1.8S2.25 3.82 2.25 6.338z"/>
+            </svg>
+            +7 (960) 283-00-13
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Menu -->
+<div class="overlay" id="m-menu" onclick="bg_close(event)">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Меню ресторана">
+    <div class="modal-head">
+      <div>
+        <span class="tag" style="margin-bottom:8px">Ресторан</span>
+        <h2 style="font-family:Cormorant,serif;font-size:34px;font-weight:600;color:#fff">Наше меню</h2>
+      </div>
+      <button class="modal-close" onclick="close_m('m-menu')" aria-label="Закрыть">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-cnt">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.75">
+        Авторское меню для гурманов. Бизнес-ланч ежедневно 12:00–16:00 — <strong style="color:var(--gold)">590 ₽</strong>. Блюда можно заказать прямо за бильярдным столом.
+      </p>
+      <div id="menu-spinner" style="text-align:center;padding:52px;color:var(--muted)">
+        <div style="width:38px;height:38px;border:2px solid rgba(200,151,58,.18);border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 14px"></div>
+        Загружаем меню…
+      </div>
+      <div class="menu-g" id="menu-grid" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Contacts -->
+<div class="overlay" id="m-contacts" onclick="bg_close(event)">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Контакты">
+    <div class="modal-head">
+      <div>
+        <span class="tag" style="margin-bottom:8px">Связаться</span>
+        <h2 style="font-family:Cormorant,serif;font-size:34px;font-weight:600;color:#fff">Контакты</h2>
+      </div>
+      <button class="modal-close" onclick="close_m('m-contacts')" aria-label="Закрыть">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-cnt">
+      <p style="font-size:14px;color:var(--muted)">Позвоните нам — мы на месте круглосуточно:</p>
+      <a href="tel:+79312987778" class="phone-big">+7 (931) 298-777-8</a>
+      <a href="tel:+79312987778" class="btn-gold" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M2.25 6.338c0 3.696 1.83 6.971 4.66 8.993A18.38 18.38 0 0012 16.9c1.787 0 3.47-.465 4.916-1.28A11.247 11.247 0 0021.75 6.338C21.75 3.82 17.321 1.8 12 1.8S2.25 3.82 2.25 6.338z"/>
+        </svg>
+        Позвонить сейчас
+      </a>
+      <div class="contact-g">
+        <div class="contact-box">
+          <div class="contact-lbl">Адрес</div>
+          <div class="contact-val">ул. Пионерская, 21<br>Санкт-Петербург, 197110</div>
+        </div>
+        <div class="contact-box">
+          <div class="contact-lbl">Часы работы</div>
+          <div class="contact-val">10:00 – 06:00<br><span style="font-size:13px;color:var(--muted)">После 23:00 — вход по звонку</span></div>
+        </div>
+        <div class="contact-box">
+          <div class="contact-lbl">Метро</div>
+          <div class="contact-val">Чкаловская<br><span style="font-size:13px;color:var(--muted)">5 минут пешком</span></div>
+        </div>
+        <div class="contact-box">
+          <div class="contact-lbl">Instagram</div>
+          <div class="contact-val">
+            <a href="https://www.instagram.com/club.alibi/" target="_blank" rel="noopener"
+               style="color:var(--gold);text-decoration:none">@club.alibi</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ SCRIPTS ══════════════ -->
+<script>
+// ── Billiard balls canvas ──────────────────
+(function(){
+  const cvs = document.getElementById('hero-canvas');
+  const ctx = cvs.getContext('2d');
+
+  function resize(){
+    cvs.width  = window.innerWidth;
+    cvs.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COLORS = [
+    'rgba(200,151,58,.13)', 'rgba(200,151,58,.08)', 'rgba(180,100,30,.12)',
+    'rgba(200,151,58,.06)', 'rgba(230,173,85,.09)', 'rgba(100,50,20,.14)'
+  ];
+
+  const balls = Array.from({length: 18}, () => ({
+    x:  Math.random() * innerWidth,
+    y:  Math.random() * innerHeight,
+    r:  Math.random() * 32 + 10,
+    vx: (Math.random() - .5) * .65,
+    vy: (Math.random() - .5) * .65,
+    c:  COLORS[Math.floor(Math.random() * COLORS.length)]
+  }));
+
+  function tick(){
+    ctx.clearRect(0, 0, cvs.width, cvs.height);
+    balls.forEach(b => {
+      b.x += b.vx; b.y += b.vy;
+      if (b.x < -b.r)           b.x = cvs.width  + b.r;
+      if (b.x > cvs.width  + b.r) b.x = -b.r;
+      if (b.y < -b.r)           b.y = cvs.height + b.r;
+      if (b.y > cvs.height + b.r) b.y = -b.r;
+
+      ctx.save();
+      ctx.shadowBlur = 28; ctx.shadowColor = b.c;
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, b.r, 0, Math.PI*2);
+      ctx.fillStyle = b.c;
+      ctx.fill();
+      // highlight
+      ctx.shadowBlur = 0;
+      ctx.beginPath();
+      ctx.arc(b.x - b.r*.25, b.y - b.r*.28, b.r*.32, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,.09)';
+      ctx.fill();
+      ctx.restore();
+    });
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
+// ── Scroll reveal ──────────────────────────
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: .1 });
+document.querySelectorAll('.rev').forEach(el => revObs.observe(el));
+
+// ── Route steps ───────────────────────────
+const stepObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const d = +(e.target.dataset.delay || 0);
+      setTimeout(() => e.target.classList.add('vis'), d);
+      stepObs.unobserve(e.target);
+    }
+  });
+}, { threshold: .15 });
+document.querySelectorAll('.step').forEach(el => stepObs.observe(el));
+
+// ── Navbar scroll ─────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', scrollY > 60);
+}, {passive:true});
+
+// ── Mobile menu ───────────────────────────
+function toggleMenu(){ document.getElementById('navLinks').classList.toggle('open'); }
+function closeMenu() { document.getElementById('navLinks').classList.remove('open'); }
+
+document.getElementById('burger').addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMenu(); }
+});
+
+// ── Modals ────────────────────────────────
+function open_m(id){
+  document.getElementById(id).classList.add('on');
+  document.body.style.overflow = 'hidden';
+  if (id === 'm-menu') loadMenu();
+}
+function close_m(id){
+  document.getElementById(id).classList.remove('on');
+  document.body.style.overflow = '';
+}
+function bg_close(e){
+  if (e.target === e.currentTarget) close_m(e.currentTarget.id);
+}
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  document.querySelectorAll('.overlay.on').forEach(el => {
+    el.classList.remove('on');
+    document.body.style.overflow = '';
+  });
+});
+
+// keyboard open for popup cards
+document.querySelectorAll('.popup-card').forEach(card => {
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+  });
+});
+
+// ── Load menu images ──────────────────────
+let menuDone = false;
+function loadMenu(){
+  if (menuDone) return;
+  menuDone = true;
+  const grid    = document.getElementById('menu-grid');
+  const spinner = document.getElementById('menu-spinner');
+  let shown = false;
+
+  for (let i = 1; i <= 12; i++){
+    const img = document.createElement('img');
+    img.className = 'menu-img';
+    img.alt       = `Меню страница ${i}`;
+    img.loading   = 'lazy';
+    img.src       = `https://club-alibi.ru/${i}.jpg`;
+    img.onclick   = () => window.open(img.src, '_blank');
+    img.onload = img.onerror = () => {
+      if (!shown){ shown = true; spinner.style.display = 'none'; grid.style.display = 'grid'; }
+    };
+    grid.appendChild(img);
+  }
+  setTimeout(() => {
+    spinner.style.display = 'none'; grid.style.display = 'grid';
+  }, 6000);
+}
+</script>
+</body>
+</html>
