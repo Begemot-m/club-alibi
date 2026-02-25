@@ -768,6 +768,12 @@
         opacity: 1 !important;
       }
       .nav-cta-mobile a:hover { background: var(--gold-light) !important; }
+      /* Hero sub — на мобиле каждый элемент с новой строки, по центру */
+      .hero-sub { text-align: center; }
+      .hero-sub-sep  { display: none; }
+      .hero-sub-city,
+      .hero-sub-item { display: block; }
+
       .tables-grid { grid-template-columns: 1fr; }
       .trainers-g  { grid-template-columns: 1fr; }
       .menu-g      { grid-template-columns: 1fr; }
@@ -841,12 +847,18 @@
       </svg>
       <div style="text-align:left">
         <div class="hero-logo-text">АЛИБИ</div>
-        <div class="hero-logo-sub-text">бильярдный клуб · с 2007 года</div>
+        <div class="hero-logo-sub-text">бильярдный клуб</div>
       </div>
     </div>
     <span class="hero-est">Основан в 2007 году · Санкт-Петербург</span>
     <h1 class="hero-h1">Мастерство<br>и <em>атмосфера</em></h1>
-    <p class="hero-sub">Ул. Пионерская, 21 &nbsp;·&nbsp; 33 стола &nbsp;·&nbsp; 1 000 м²</p>
+    <p class="hero-sub">
+      <span class="hero-sub-city">Санкт-Петербург, ул. Пионерская, 21</span>
+      <span class="hero-sub-sep"> &nbsp;·&nbsp; </span>
+      <span class="hero-sub-item">33 стола</span>
+      <span class="hero-sub-sep"> &nbsp;·&nbsp; </span>
+      <span class="hero-sub-item">1 000 м²</span>
+    </p>
     <div class="hero-btns">
       <a href="tel:+79312987778" class="btn-gold">Забронировать стол</a>
       <a href="#services" class="btn-outline">Подробнее</a>
