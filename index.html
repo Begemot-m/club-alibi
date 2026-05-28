@@ -337,8 +337,12 @@
     /* ── SECTION WRAPPER ───────────────────────── */
     .wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
 
-    .sec { padding: 110px 0; }
+    .sec { padding: 110px 0; scroll-margin-top: 90px; }
     .sec-alt { background: var(--bg-alt); }
+    #tables { scroll-margin-top: 90px; }
+    #prices { scroll-margin-top: 90px; }
+    #services { scroll-margin-top: 90px; }
+    #route { scroll-margin-top: 90px; }
 
     .tag {
       display: inline-block;
@@ -349,7 +353,7 @@
     .sec-h2 {
       font-family: 'Cormorant', serif;
       font-size: clamp(36px, 5.5vw, 64px);
-      font-weight: 600; line-height: 1.08; color: #fff;
+      font-weight: 600; line-height: 1.08; color: #1C1008;
       margin-bottom: 22px;
     }
     .sec-p {
@@ -454,23 +458,30 @@
       position: relative; border-radius: 22px;
       overflow: hidden; cursor: pointer;
       aspect-ratio: 3/4;
-      transition: transform .4s cubic-bezier(.22,.68,0,1.3);
+      background: transparent;
+      border: 2px solid #1C1008;
+      transition: transform .4s cubic-bezier(.22,.68,0,1.3), border-color .3s, box-shadow .3s;
     }
-    .popup-card:hover { transform: scale(1.025); }
+    .popup-card:hover {
+      transform: scale(1.025);
+      border-color: var(--green);
+      box-shadow: 0 8px 32px rgba(46,125,82,.18);
+    }
     .popup-card:focus-visible {
       outline: 2px solid var(--green); outline-offset: 4px;
     }
 
     .popup-bg {
       position: absolute; inset: 0;
-      background-size: cover; background-position: center;
+      background: none !important;
+      overflow: hidden;
       transition: transform .6s ease;
     }
-    .popup-card:hover .popup-bg { transform: scale(1.07); }
+    .popup-card:hover .popup-bg { transform: scale(1.04); }
 
     .popup-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,4,1,.95) 28%, rgba(8,4,1,.35) 100%);
+      background: linear-gradient(to top, rgba(255,255,255,0.97) 45%, rgba(255,255,255,0.10) 100%);
     }
 
     .popup-body {
@@ -479,18 +490,18 @@
     }
     .popup-ico {
       width: 76px; height: 76px;
-      background: rgba(46,125,82,.11);
-      border: 1px solid rgba(46,125,82,.32);
+      background: rgba(46,125,82,.08);
+      border: 1px solid rgba(46,125,82,.35);
       border-radius: 18px;
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 20px;
     }
     .popup-title {
       font-family: 'Cormorant', serif;
-      font-size: 30px; font-weight: 600; color: #fff;
+      font-size: 30px; font-weight: 600; color: #1C1008;
       line-height: 1.15; margin-bottom: 10px;
     }
-    .popup-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 22px; }
+    .popup-desc { font-size: 13px; color: rgba(28,16,8,0.65); line-height: 1.6; margin-bottom: 22px; }
     .popup-link {
       display: inline-flex; align-items: center; gap: 7px;
       color: var(--green); font-size: 11px; font-weight: 600;
@@ -498,6 +509,9 @@
       transition: gap .2s;
     }
     .popup-card:hover .popup-link { gap: 12px; }
+
+    /* Декоративные SVG внутри прозрачных карточек */
+    .popup-bg svg { opacity: .30 !important; }
 
     /* ── MODALS ────────────────────────────────── */
     .overlay {
@@ -868,7 +882,7 @@
 <!-- ══════════════ NAV ══════════════ -->
 <nav id="nav">
   <a href="#" class="nav-logo">
-    <img src="logo.svg" alt="Бильярдный клуб Алиби" height="34" style="display:block">
+    <img src="logo.png" alt="Бильярдный клуб Алиби" height="34" style="display:block">
   </a>
 
   <ul class="nav-links" id="navLinks">
@@ -895,7 +909,7 @@
 
   <div class="hero-inner">
     <div class="hero-logo-wrap">
-      <img src="logo.svg" alt="Бильярдный клуб Алиби" style="height:clamp(48px,7vw,72px);display:block">
+      <img src="logo.png" alt="Бильярдный клуб Алиби" style="height:clamp(48px,7vw,72px);display:block">
     </div>
     <span class="hero-est">
       <span class="hero-est-year">Основан в 2007 году</span><span class="hero-est-sep"> · </span><span class="hero-est-city">Санкт-Петербург</span>
@@ -1596,7 +1610,7 @@
   <div class="footer-grid">
     <div>
       <div class="foot-logo" style="margin-bottom:20px">
-        <img src="logo.svg" alt="Бильярдный клуб Алиби" height="40" style="display:block;filter:brightness(0) invert(1) sepia(1) saturate(0.4) brightness(0.85)">
+        <img src="logo.png" alt="Бильярдный клуб Алиби" height="40" style="display:block;filter:brightness(0) invert(1) sepia(1) saturate(0.4) brightness(0.85)">
       </div>
       <p class="foot-tagline">Бильярдный клуб премиум-класса в центре Санкт-Петербурга. Основан в 2007 году. 33 стола, 3 зала, VIP-зона.</p>
     </div>
