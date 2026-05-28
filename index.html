@@ -3,22 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Бильярдный клуб «Алиби» — Санкт-Петербург</title>
-  <meta name="description" content="Бильярдный клуб Алиби в Санкт-Петербурге. 33 стола, 1000 м², бильярдная школа, ресторан. Ул. Пионерская, 21.">
+  <title>Бильярдный клуб «Алиби» — Санкт-Петербург | ул. Пионерская, 21</title>
+  <meta name="description" content="Бильярдный клуб Алиби в Санкт-Петербурге. 33 стола — русский бильярд и американский пул. Школа бильярда, ресторан. Метро Чкаловская, ул. Пионерская, 21. Работаем 10:00–06:00 ежедневно.">
+  <meta name="keywords" content="бильярдный клуб санкт-петербург, бильярд спб, русский бильярд, американский пул, школа бильярда, турниры по бильярду, бильярд метро чкаловская, бильярдный клуб пионерская, бильярд спб недорого, корпоратив бильярд спб">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Бильярдный клуб Алиби">
+  <link rel="canonical" href="https://club-alibi.ru/">
+
+  <!-- Open Graph / Yandex -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://club-alibi.ru/">
+  <meta property="og:title"       content="Бильярдный клуб «Алиби» — Санкт-Петербург">
+  <meta property="og:description" content="33 бильярдных стола, русский бильярд и пул. Школа, ресторан, VIP-зал. Метро Чкаловская, ул. Пионерская, 21. Открыто 10:00–06:00.">
+  <meta property="og:locale"      content="ru_RU">
+  <meta property="og:site_name"   content="Бильярдный клуб Алиби">
+
+  <!-- JSON-LD LocalBusiness (Yandex / Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Бильярдный клуб «Алиби»",
+    "url": "https://club-alibi.ru/",
+    "telephone": "+79312987778",
+    "foundingDate": "2007",
+    "description": "Профессиональный бильярдный клуб в Санкт-Петербурге. 33 стола — русский бильярд и американский пул. Школа бильярда, ресторан, VIP-зал, турниры.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Пионерская, 21",
+      "addressLocality": "Санкт-Петербург",
+      "postalCode": "197110",
+      "addressCountry": "RU"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "59.957000",
+      "longitude": "30.295804"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "10:00",
+      "closes": "06:00"
+    },
+    "priceRange": "650–3500 ₽/ч",
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "Русский бильярд", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Американский пул", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "VIP-зал", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Школа бильярда", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Ресторан", "value": true}
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --brown-dark:  #100A04;
-      --brown-mid:   #1E1108;
-      --brown-card:  #261508;
+      --bg:          #FFFFFF;
+      --bg-alt:      #F4F1EC;
+      --brown-dark:  #FFFFFF;
+      --brown-mid:   #FFFFFF;
+      --brown-card:  #F9F7F3;
       --green:       #2E7D52;
       --green-light: #3E9B6A;
-      --cream:       #F2E8D4;
-      --muted:       rgba(242,232,212,0.55);
-      --border:      rgba(46,125,82,0.22);
+      --cream:       #1C1008;
+      --muted:       rgba(28,16,8,0.52);
+      --border:      rgba(46,125,82,0.20);
+      --foot-bg:     #1A0E06;
+      --foot-text:   rgba(242,232,212,0.60);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,7 +82,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--brown-dark);
+      background: var(--bg);
       color: var(--cream);
       font-family: 'Montserrat', sans-serif;
       font-size: 16px;
@@ -49,13 +105,14 @@
       justify-content: space-between;
       gap: 16px;
       padding: 10px 22px;
-      background: rgba(16,10,4,0.82);
+      background: rgba(255,255,255,0.90);
       backdrop-filter: blur(22px);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(46,125,82,0.18);
       border-radius: 14px;
+      box-shadow: 0 2px 24px rgba(28,16,8,0.07);
       transition: background .3s;
     }
-    #nav.scrolled { background: rgba(10,6,2,0.97); }
+    #nav.scrolled { background: rgba(255,255,255,0.98); }
 
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .nav-logo-text {
@@ -67,7 +124,7 @@
     .nav-logo-sub {
       font-family: 'Montserrat', sans-serif;
       font-size: 8px; font-weight: 500;
-      color: var(--muted); letter-spacing: .3em;
+      color: rgba(28,16,8,0.45); letter-spacing: .3em;
       text-transform: uppercase; display: block; margin-top: 2px;
     }
 
@@ -75,16 +132,16 @@
       display: flex; gap: 28px; list-style: none;
     }
     .nav-links a {
-      color: var(--cream); text-decoration: none;
+      color: #1C1008; text-decoration: none;
       font-size: 12px; font-weight: 500;
       letter-spacing: .12em; text-transform: uppercase;
-      opacity: .75; transition: opacity .2s, color .2s;
+      opacity: .65; transition: opacity .2s, color .2s;
     }
     .nav-links a:hover { opacity: 1; color: var(--green); }
 
     .nav-cta {
       flex-shrink: 0;
-      background: var(--green); color: #100A04;
+      background: var(--green); color: #fff;
       padding: 9px 22px; border-radius: 8px;
       font-size: 12px; font-weight: 700;
       letter-spacing: .08em; text-transform: uppercase;
@@ -110,7 +167,7 @@
       min-height: 100svh;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
-      background: radial-gradient(ellipse 80% 60% at 35% 55%, #2B1507 0%, #130A03 55%, #080401 100%);
+      background: linear-gradient(150deg, #FDFBF7 0%, #EDE7D9 60%, #E4DDD0 100%);
     }
 
     #hero-canvas {
@@ -119,14 +176,13 @@
       pointer-events: none;
     }
 
-    /* subtle diagonal texture */
     #hero::before {
       content: '';
       position: absolute; inset: 0;
       background-image: repeating-linear-gradient(
         -45deg,
         transparent, transparent 38px,
-        rgba(46,125,82,.025) 38px, rgba(46,125,82,.025) 40px
+        rgba(46,125,82,.06) 38px, rgba(46,125,82,.06) 40px
       );
     }
 
@@ -168,7 +224,7 @@
       font-size: clamp(44px, 9vw, 96px);
       font-weight: 600; line-height: 1.05;
       letter-spacing: -.02em;
-      color: #fff;
+      color: #1C1008;
       margin-bottom: 28px;
       animation: fadeUp .9s .25s ease both;
     }
@@ -188,7 +244,7 @@
     }
 
     .btn-gold {
-      background: var(--green); color: #100A04;
+      background: var(--green); color: #fff;
       padding: 15px 38px; border-radius: 8px;
       font-size: 13px; font-weight: 700;
       letter-spacing: .1em; text-transform: uppercase;
@@ -198,16 +254,16 @@
     .btn-gold:hover {
       background: var(--green-light);
       transform: translateY(-2px);
-      box-shadow: 0 10px 32px rgba(46,125,82,.38);
+      box-shadow: 0 10px 32px rgba(46,125,82,.30);
     }
 
     .btn-outline {
-      background: transparent; color: var(--cream);
+      background: transparent; color: #1C1008;
       padding: 15px 38px; border-radius: 8px;
       font-size: 13px; font-weight: 500;
       letter-spacing: .1em; text-transform: uppercase;
       text-decoration: none; cursor: pointer;
-      border: 1px solid rgba(242,232,212,.28);
+      border: 1px solid rgba(28,16,8,.22);
       transition: border-color .25s, color .25s;
     }
     .btn-outline:hover { border-color: var(--green); color: var(--green); }
@@ -223,7 +279,7 @@
 
     /* ── STATS BAR ─────────────────────────────── */
     #stats {
-      background: linear-gradient(180deg, #080401 0%, #1A0E06 100%);
+      background: var(--bg-alt);
       padding: 0;
     }
     .stats-grid {
@@ -282,7 +338,7 @@
     .wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
 
     .sec { padding: 110px 0; }
-    .sec-alt { background: rgba(0,0,0,.22); }
+    .sec-alt { background: var(--bg-alt); }
 
     .tag {
       display: inline-block;
@@ -309,13 +365,14 @@
       margin-top: 58px;
     }
     .table-card {
-      background: rgba(255,255,255,.025);
+      background: #FFFFFF;
       border: 1px solid var(--border);
       border-radius: 18px;
       padding: 50px 30px 42px;
       text-align: center;
       position: relative; overflow: hidden;
-      transition: transform .4s, border-color .4s, background .4s;
+      box-shadow: 0 2px 16px rgba(28,16,8,.05);
+      transition: transform .4s, border-color .4s, background .4s, box-shadow .4s;
       cursor: default;
     }
     .table-card::before {
@@ -324,7 +381,7 @@
       background: radial-gradient(circle at 50% 0, rgba(46,125,82,.12) 0%, transparent 65%);
       opacity: 0; transition: opacity .4s;
     }
-    .table-card:hover { transform: translateY(-5px); border-color: rgba(46,125,82,.4); }
+    .table-card:hover { transform: translateY(-5px); border-color: rgba(46,125,82,.5); box-shadow: 0 8px 32px rgba(46,125,82,.12); }
     .table-card:hover::before { opacity: 1; }
 
     .table-ico { width: 100%; max-width: 200px; height: auto; display: block; margin: 0 auto 28px; }
@@ -668,8 +725,8 @@
 
     /* ── FOOTER ────────────────────────────────── */
     footer {
-      background: #060402;
-      border-top: 1px solid rgba(46,125,82,.1);
+      background: var(--foot-bg);
+      border-top: 1px solid rgba(46,125,82,.12);
       padding: 64px 24px 40px;
     }
     .footer-grid {
@@ -677,21 +734,22 @@
       display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px;
     }
     .foot-logo img { height: 54px; margin-bottom: 20px; }
-    .foot-tagline { font-size: 14px; color: var(--muted); line-height: 1.8; max-width: 270px; }
-    .foot-h { font-size: 11px; color: var(--green); letter-spacing: .22em; text-transform: uppercase; margin-bottom: 18px; }
+    .foot-tagline { font-size: 14px; color: rgba(242,232,212,0.60); line-height: 1.8; max-width: 270px; }
+    .foot-h { font-size: 11px; color: var(--green-light); letter-spacing: .22em; text-transform: uppercase; margin-bottom: 18px; }
     .foot-ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-    .foot-ul a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .2s; }
-    .foot-ul a:hover { color: var(--cream); }
+    .foot-ul a { color: rgba(242,232,212,0.60); text-decoration: none; font-size: 14px; transition: color .2s; }
+    .foot-ul a:hover { color: #F2E8D4; }
+    .foot-ul li[style] { color: rgba(242,232,212,0.60) !important; }
 
     .foot-bottom {
       max-width: 1240px; margin: 36px auto 0;
       padding-top: 22px;
-      border-top: 1px solid rgba(255,255,255,.05);
+      border-top: 1px solid rgba(255,255,255,.06);
       display: flex; justify-content: space-between; align-items: center;
       font-size: 12px; color: rgba(242,232,212,.28);
     }
     .foot-bottom a { color: inherit; text-decoration: none; transition: color .2s; }
-    .foot-bottom a:hover { color: var(--green); }
+    .foot-bottom a:hover { color: var(--green-light); }
 
     /* ── REVEAL ────────────────────────────────── */
     .rev {
@@ -736,9 +794,10 @@
       .nav-links.open {
         display: flex; flex-direction: column; align-items: center;
         position: fixed; top: 74px; left: 14px; right: 14px; bottom: auto;
-        background: rgba(14,8,3,.98);
+        background: rgba(255,255,255,.98);
         backdrop-filter: blur(24px);
-        border: 1px solid var(--border);
+        border: 1px solid rgba(46,125,82,.18);
+        box-shadow: 0 8px 32px rgba(28,16,8,.10);
         border-radius: 20px;
         padding: 24px 20px 20px; gap: 0; z-index: 59;
       }
@@ -747,12 +806,12 @@
       }
       .nav-links.open li a {
         display: block; font-size: 14px; letter-spacing: .18em;
-        padding: 14px 8px;
-        border-bottom: 1px solid rgba(46,125,82,.1);
-        opacity: .85; text-align: center;
+        padding: 14px 8px; color: #1C1008;
+        border-bottom: 1px solid rgba(46,125,82,.10);
+        opacity: .80; text-align: center;
       }
       .nav-links.open li:last-child a { border-bottom: none; }
-      /* Кнопка бронирования внутри дропдауна */
+      /* Кнопка в дропдауне */
       .nav-cta-mobile {
         display: block !important;
         margin-top: 18px;
@@ -762,7 +821,7 @@
         border-bottom: none !important;
         padding: 13px 28px !important;
         background: var(--green) !important;
-        color: #100A04 !important;
+        color: #fff !important;
         border-radius: 10px !important;
         font-size: 12px !important; font-weight: 700 !important;
         opacity: 1 !important;
@@ -809,17 +868,7 @@
 <!-- ══════════════ NAV ══════════════ -->
 <nav id="nav">
   <a href="#" class="nav-logo">
-    <!-- billiard ball icon -->
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-      <circle cx="18" cy="18" r="17" fill="#1E1108" stroke="#2E7D52" stroke-width="1.2"/>
-      <circle cx="18" cy="18" r="10" fill="rgba(46,125,82,.12)" stroke="#2E7D52" stroke-width="1"/>
-      <text x="18" y="22" text-anchor="middle" fill="#2E7D52" font-family="Georgia,serif" font-size="10" font-weight="700">A</text>
-      <circle cx="12" cy="12" r="4" fill="rgba(255,255,255,.08)"/>
-    </svg>
-    <div>
-      <span class="nav-logo-text">АЛИБИ</span>
-      <span class="nav-logo-sub">бильярдный клуб</span>
-    </div>
+    <img src="logo.svg" alt="Бильярдный клуб Алиби" height="34" style="display:block">
   </a>
 
   <ul class="nav-links" id="navLinks">
@@ -846,17 +895,7 @@
 
   <div class="hero-inner">
     <div class="hero-logo-wrap">
-      <svg width="70" height="70" viewBox="0 0 70 70" fill="none" aria-hidden="true">
-        <circle cx="35" cy="35" r="33" fill="#1E1108" stroke="#2E7D52" stroke-width="1.5"/>
-        <circle cx="35" cy="35" r="20" fill="rgba(46,125,82,.1)" stroke="#2E7D52" stroke-width="1"/>
-        <text x="35" y="42" text-anchor="middle" fill="#2E7D52" font-family="Georgia,serif" font-size="20" font-weight="700">A</text>
-        <circle cx="24" cy="23" r="7" fill="rgba(255,255,255,.07)"/>
-        <circle cx="35" cy="35" r="33" fill="none" stroke="rgba(46,125,82,.15)" stroke-width="6"/>
-      </svg>
-      <div style="text-align:left">
-        <div class="hero-logo-text">АЛИБИ</div>
-        <div class="hero-logo-sub-text">бильярдный клуб</div>
-      </div>
+      <img src="logo.svg" alt="Бильярдный клуб Алиби" style="height:clamp(48px,7vw,72px);display:block">
     </div>
     <span class="hero-est">
       <span class="hero-est-year">Основан в 2007 году</span><span class="hero-est-sep"> · </span><span class="hero-est-city">Санкт-Петербург</span>
@@ -1556,17 +1595,8 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="foot-logo" style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-          <circle cx="22" cy="22" r="21" fill="#1E1108" stroke="#2E7D52" stroke-width="1.2"/>
-          <circle cx="22" cy="22" r="12" fill="rgba(46,125,82,.1)" stroke="#2E7D52" stroke-width="1"/>
-          <text x="22" y="27" text-anchor="middle" fill="#2E7D52" font-family="Georgia,serif" font-size="13" font-weight="700">A</text>
-          <circle cx="15" cy="15" r="4.5" fill="rgba(255,255,255,.07)"/>
-        </svg>
-        <div>
-          <div style="font-family:Cormorant,serif;font-size:28px;font-weight:700;color:var(--green);letter-spacing:.15em;line-height:1">АЛИБИ</div>
-          <div style="font-size:9px;color:var(--muted);letter-spacing:.28em;text-transform:uppercase;margin-top:3px">бильярдный клуб</div>
-        </div>
+      <div class="foot-logo" style="margin-bottom:20px">
+        <img src="logo.svg" alt="Бильярдный клуб Алиби" height="40" style="display:block;filter:brightness(0) invert(1) sepia(1) saturate(0.4) brightness(0.85)">
       </div>
       <p class="foot-tagline">Бильярдный клуб премиум-класса в центре Санкт-Петербурга. Основан в 2007 году. 33 стола, 3 зала, VIP-зона.</p>
     </div>
@@ -1785,8 +1815,8 @@
   window.addEventListener('resize', resize);
 
   const COLORS = [
-    'rgba(46,125,82,.13)', 'rgba(46,125,82,.08)', 'rgba(30,80,50,.12)',
-    'rgba(46,125,82,.06)', 'rgba(62,155,106,.09)', 'rgba(20,60,35,.14)'
+    'rgba(46,125,82,.18)', 'rgba(46,125,82,.11)', 'rgba(107,58,26,.15)',
+    'rgba(46,125,82,.09)', 'rgba(62,155,106,.13)', 'rgba(107,58,26,.10)'
   ];
 
   const balls = Array.from({length: 18}, () => ({
