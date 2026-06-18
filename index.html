@@ -170,7 +170,9 @@
       min-height: 100svh;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
-      background: linear-gradient(150deg, #FDFBF7 0%, #EDE7D9 60%, #E4DDD0 100%);
+      background:
+        linear-gradient(150deg, rgba(20,14,8,.62) 0%, rgba(20,14,8,.42) 55%, rgba(20,14,8,.58) 100%),
+        url('images/hero-cover.jpg') center 30% / cover no-repeat;
     }
 
     #hero-canvas {
@@ -188,7 +190,7 @@
 
     .hero-est {
       display: inline-block;
-      color: var(--green);
+      color: #E7C77A;
       font-size: 11px; font-weight: 600;
       letter-spacing: .35em; text-transform: uppercase;
       margin-bottom: 20px;
@@ -200,11 +202,12 @@
       font-size: clamp(30px, 5vw, 56px);
       font-weight: 600; line-height: 1.1;
       letter-spacing: -.01em;
-      color: var(--green);
+      color: #fff;
       margin-bottom: 44px;
       animation: fadeUp .9s .25s ease both;
+      text-shadow: 0 2px 18px rgba(0,0,0,.35);
     }
-    .hero-h1 em { color: var(--green); font-style: italic; }
+    .hero-h1 em { color: #E7C77A; font-style: italic; }
 
     .hero-btns {
       display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
@@ -226,21 +229,21 @@
     }
 
     .btn-outline {
-      background: transparent; color: #1C1008;
+      background: transparent; color: #fff;
       padding: 15px 38px; border-radius: 8px;
       font-size: 13px; font-weight: 500;
       letter-spacing: .1em; text-transform: uppercase;
       text-decoration: none; cursor: pointer;
-      border: 1px solid rgba(28,16,8,.22);
+      border: 1px solid rgba(255,255,255,.45);
       transition: border-color .25s, color .25s;
     }
-    .btn-outline:hover { border-color: var(--green); color: var(--green); }
+    .btn-outline:hover { border-color: #E7C77A; color: #E7C77A; }
 
     .hero-scroll-hint {
       position: absolute; bottom: 18px; left: 50%;
       transform: translateX(-50%);
       display: flex; flex-direction: column; align-items: center; gap: 6px;
-      color: rgba(28,16,8,0.42); font-size: 9px;
+      color: rgba(255,255,255,0.7); font-size: 9px;
       letter-spacing: .25em; text-transform: uppercase;
       animation: scrollBounce 2s infinite;
     }
